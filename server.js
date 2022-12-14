@@ -5,7 +5,7 @@ const { UUID, UUIDV4, STRING } = Sequelize;
 const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/leaderboard_db');
 const redis = require('redis');
 console.log(process.env.REDIS_URL);
-const client = redis.createClient(process.env.REDIS_URL);
+const client = redis.createClient({ url: process.env.REDIS_URL });
 
 app.get('/leaderboard/', async(req, res, next)=> {
   try {
